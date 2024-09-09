@@ -1,0 +1,71 @@
+{
+	"info": {
+		"_postman_id": "d1f66982-e7d6-41e4-b279-3aca123454c6",
+		"name": "spribe",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "31785677"
+	},
+	"item": [
+		{
+			"name": "getAllCurrencies",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/currencies",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"currencies"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getAllCurrency",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/currencies/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"currencies",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "addCurrency",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/currencies",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"currencies"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

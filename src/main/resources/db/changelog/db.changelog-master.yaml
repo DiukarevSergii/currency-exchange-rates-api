@@ -1,0 +1,111 @@
+databaseChangeLog:
+  - changeSet:
+      id: 1
+      author: diukarev
+      changes:
+        - createTable:
+            tableName: user
+            columns:
+              - column:
+                  name: id
+                  type: bigint
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+              - column:
+                  name: username
+                  type: varchar(50)
+                  constraints:
+                    nullable: false
+                    unique: true
+              - column:
+                  name: role
+                  type: varchar(50)
+                  constraints:
+                    nullable: false
+
+  - changeSet:
+      id: 2
+      author: diukarev
+      changes:
+        - insert:
+            tableName: user
+            columns:
+              - column:
+                  name: username
+                  value: 'SYSTEM'
+              - column:
+                  name: role
+                  value: 'SYSTEM'
+
+  - changeSet:
+      id: 3
+      author: diukarev
+      changes:
+        - insert:
+            tableName: user
+            columns:
+              - column:
+                  name: username
+                  value: 'REAL_USER'
+              - column:
+                  name: role
+                  value: 'USER'
+
+  - changeSet:
+      id: 4
+      author: diukarev
+      changes:
+        - createTable:
+            tableName: exchange_rate
+            columns:
+              - column:
+                  name: id
+                  type: bigint
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+              - column:
+                  name: currency_code
+                  type: varchar(3)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: rate
+                  type: decimal(19, 6)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: created_at
+                  type: timestamp
+                  defaultValueComputed: CURRENT_TIMESTAMP
+                  constraints:
+                    nullable: false
+              - column:
+                  name: updated_at
+                  type: timestamp
+                  constraints:
+                    nullable: true
+              - column:
+                  name: created_by_user_id
+                  type: bigint
+                  constraints:
+                    nullable: false
+                    foreignKeyName: fk_exchange_rate_created_by
+                    references: user(id)
+              - column:
+                  name: updated_by_user_id
+                  type: bigint
+                  constraints:
+                    nullable: true
+                    foreignKeyName: fk_exchange_rate_updated_by
+                    references: user(id)
+
+  - changeSet:
+      id: 5
+      author: diukarev
+      changes:
+        - addUniqueConstraint:
+            columnNames: currency_code
+            tableName: exchange_rate
+            constraintName: uk_currency_code
